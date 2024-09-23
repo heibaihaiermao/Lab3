@@ -1,7 +1,9 @@
 package org.translation;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 // TODO Task: modify this class so that it also supports the Spanish language code "es" and
 //            one more language code of your choice. Each member of your group should add
@@ -52,22 +54,16 @@ public class InLabByHandTranslator implements Translator {
      */
     @Override
     public String translate(String country, String language) {
-        // TODO Checkstyle: Return count is 5 (max allowed for non-void methods/ lambdas is 2).
         if (!CANADA.equals(country)) {
             return null;
         }
 
-        if ("de".equals(language)) {
-            return "Kanada";
+        Map<String, String> translations = new HashMap<>();
+        translations.put("de", "Kanada");
+        translations.put("en", "Canada");
+        translations.put("zh", "加拿大");
+
+        return translations.getOrDefault(language, null);
         }
-        else if ("en".equals(language)) {
-            return "Canada";
-        }
-        else if ("zh".equals(language)) {
-            return "加拿大";
-        }
-        else {
-            return null;
-        }
-    }
 }
+
