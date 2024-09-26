@@ -40,6 +40,9 @@ public class LanguageCodeConverter {
             //           tip: you might find it convenient to create an iterator using lines.iterator()
             for (String line : lines) {
                 String[] parts = line.split("\t");
+                if (parts.length == 1) {
+                    continue;
+                }
                 nameToCode.put(parts[0], parts[1]);
                 codeToName.put(parts[1], parts[0]);
             }
@@ -77,7 +80,7 @@ public class LanguageCodeConverter {
      */
     public int getNumLanguages() {
         // Task: update this code to use your instance variable to return the correct value
-        return nameToCode.size() - 1;
+        return nameToCode.size();
     }
 
 }
