@@ -60,7 +60,8 @@ public class Main {
             //            Note: you should use the actual names in the message printed below though,
             //            since the user will see the displayed message.
             LanguageCodeConverter languageConverter = new LanguageCodeConverter();
-            System.out.println(country + " in " + language + " is " + translator.translate(converter.fromCountry(country), languageConverter.fromLanguage(language)));
+            System.out.println(country + " in " + language + " is "
+                    + translator.translate(converter.fromCountry(country), languageConverter.fromLanguage(language)));
             System.out.println("Press enter to continue or quit to exit.");
             Scanner s = new Scanner(System.in);
             String textTyped = s.nextLine();
