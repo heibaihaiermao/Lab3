@@ -58,7 +58,7 @@ public class JSONTranslator implements Translator {
     public List<String> getCountryLanguages(String country) {
         // Task: return an appropriate list of language codes,
         //            but make sure there is no aliasing to a mutable object
-        JSONObject jsonObject = jsonArray.getJSONObject(countryToIndex.get(country));
+        JSONObject jsonObject = jsonArray.getJSONObject(countryToIndex.get(country.toUpperCase()));
         ArrayList<String> languages = new ArrayList<>();
         for (String lanCode: jsonObject.keySet()) {
             if (!"alpha3".equals(lanCode) && !"alpha2".equals(lanCode) && !"id".equals(lanCode)) {
@@ -79,7 +79,7 @@ public class JSONTranslator implements Translator {
     @Override
     public String translate(String country, String language) {
         // Task: complete this method using your instance variables as needed
-        JSONObject jsonObject = jsonArray.getJSONObject(countryToIndex.get(country));
+        JSONObject jsonObject = jsonArray.getJSONObject(countryToIndex.get(country.toUpperCase()));
         return jsonObject.getString(language);
     }
 }
