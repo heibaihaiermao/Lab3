@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-// TODO Task: modify this class so that it also supports the Spanish language code "es" and
+// Task: modify this class so that it also supports the Spanish language code "es" and
 //            one more language code of your choice. Each member of your group should add
 //            support for one additional langauge code on a branch; then push and create a pull request on GitHub.
 
@@ -54,16 +54,19 @@ public class InLabByHandTranslator implements Translator {
      */
     @Override
     public String translate(String country, String language) {
-        if (!CANADA.equals(country)) {
+        // Checkstyle: Return count is 5 (max allowed for non-void methods/ lambdas is 2).
+        Map<String, String> languageToTranslate = new HashMap<>();
+        languageToTranslate.put("de", "Kanada");
+        languageToTranslate.put("en", "Canada");
+        languageToTranslate.put("zh", "加拿大");
+        languageToTranslate.put("es", "Canadá");
+        languageToTranslate.put("fr", "le Canada");
+
+        if (!CANADA.equals(country) || !languageToTranslate.containsKey(language)) {
             return null;
         }
-
-        Map<String, String> translations = new HashMap<>();
-        translations.put("de", "Kanada");
-        translations.put("en", "Canada");
-        translations.put("zh", "加拿大");
-
-        return translations.getOrDefault(language, null);
+        else {
+            return languageToTranslate.get(language);
         }
+    }
 }
-
